@@ -12,9 +12,26 @@
   <p>Привет, мир!</p>
   <p class="text"></p>
  </body>
- <script>
+
+ <script>   
+
     var currentLocation = window.location.href;    
     console.log(currentLocation);
     document.getElementsByClassName('text')[0].textContent = currentLocation;
 </script>
+<script>
+        VK.init(function() {
+            //alert('API Init')
+            //() => {debug.log('init')}
+            // API initialization succeeded
+            // Your code here
+         }, function() {
+            //alert('API error Init')
+            //() => {debug.log('error init')}
+            // API initialization failed
+            // Can reload page here
+        }, '5.131');
+</script>
+<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 </html>
