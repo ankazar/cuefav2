@@ -25,20 +25,29 @@
     //console.log(parsedUrl.searchParams.get("hash")); // "123"
 
 </script>
-<script>
-        VK.init(function() {
-            //alert('API Init')
-            //() => {debug.log('init')}
-            // API initialization succeeded
-            // Your code here
-         }, function() {
-            //alert('API error Init')
-            //() => {debug.log('error init')}
-            // API initialization failed
-            // Can reload page here
-        }, '5.131');
- 
-</script>
+
 <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+<script>
+    vkBridge.send("VKWebAppInit", {})
+    .then(_sdk => {
+            //this.add.text(0, 100, 'Init3', {font:'50px Arial', align: 'center'});
+            //this.add.text(0, 150, 'init2', {font:'50px Arial', align: 'center'})
+            vkBridge.send('VKWebAppGetUserInfo')
+            .then(_info => {
+                window.localStorage['uniqueId'] = _info.id
+                console.log('uniqueId:' + _info.id)
+                //let request = new RequestsAPI();
+                //request.authPost(2, _info.first_name, _info.photo_100)
+                .then(_data => {
+                    window.localStorage['playerId'] = _data.playerId
+                    console.log('playerId:' + _data.playerId)
+                    window.localStorage['playerName'] = _data.playerName
+                    console.log('playerName:' + _data.playerName)
+                    //this.scene.start('Menu')                    
+                })
+                //this.add.text(0, 200, window.localStorage['uniqueId'], {font:'50px Arial', align: 'center'})
+            })
+        }) 
+</script>
 </html>
