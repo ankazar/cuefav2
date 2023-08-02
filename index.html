@@ -11,6 +11,7 @@
  <body>
   <p>Привет, мир!</p>
   <p class="text"></p>
+  <p class="param text"> </p>
  </body>
 
  <script>   
@@ -18,6 +19,11 @@
     var currentLocation = window.location.href;    
     console.log(currentLocation);
     document.getElementsByClassName('text')[0].textContent = currentLocation;
+
+    const parsedUrl = new URL(window.location.href);
+    document.getElementsByClassName('param text')[0].textContent = parsedUrl.searchParams.get("hash");
+    //console.log(parsedUrl.searchParams.get("hash")); // "123"
+
 </script>
 <script>
         VK.init(function() {
@@ -31,6 +37,7 @@
             // API initialization failed
             // Can reload page here
         }, '5.131');
+ 
 </script>
 <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
