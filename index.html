@@ -35,17 +35,11 @@
             //this.add.text(0, 150, 'init2', {font:'50px Arial', align: 'center'})
             vkBridge.send('VKWebAppGetUserInfo')
             .then(_info => {
-                window.localStorage['uniqueId'] = _info.id
                 console.log('uniqueId:' + _info.id)
-                //let request = new RequestsAPI();
-                //request.authPost(2, _info.first_name, _info.photo_100)
-                .then(_data => {
-                    window.localStorage['playerId'] = _data.playerId
-                    console.log('playerId:' + _data.playerId)
-                    window.localStorage['playerName'] = _data.playerName
-                    console.log('playerName:' + _data.playerName)
+                console.log('playerId:' + _data.playerId)
+                console.log('playerName:' + _data.playerName)
                     //this.scene.start('Menu')                    
-                })
+
                 //this.add.text(0, 200, window.localStorage['uniqueId'], {font:'50px Arial', align: 'center'})
             })
         }) 
